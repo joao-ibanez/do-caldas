@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>AURA+EGO DOS LOBO</title>
+  <style>
+    body {
+      background: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 30px;
+    }
+
+    img {
+      width: 400px;
+      height: auto;
+      filter: brightness(500%) contrast(600%) saturate(3000%);
+      box-shadow: 0 0 80px #ff00ff, 0 0 120px #00ffff, 0 0 200px #ffff00;
+      border-radius: 12px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet, red);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 3s linear infinite, pulse 1s infinite alternate;
+      text-shadow:
+        0 0 20px #fff,
+        0 0 40px #ff00ff,
+        0 0 80px #00ffff,
+        0 0 120px #ffff00;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes pulse {
+      from {
+        text-shadow:
+          0 0 20px #ff00ff,
+          0 0 40px #00ffff,
+          0 0 80px #ffff00,
+          0 0 120px #ff0000;
+      }
+      to {
+        text-shadow:
+          0 0 40px #00ffff,
+          0 0 80px #ff00ff,
+          0 0 120px #00ff00,
+          0 0 160px #ffff00;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="aura+ego.png" alt="Imagem estourada">
+  <h1>AURA+EGO</h1>
+</body>
+</html>

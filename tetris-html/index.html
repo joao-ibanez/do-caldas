@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>TETRIS</h1>
+        </div>
+        
+        <div class="game-area">
+            <div class="game-board">
+                <canvas id="tetris-canvas" width="300" height="600"></canvas>
+                <div id="game-over" class="game-over hidden">
+                    <h2>Game Over!</h2>
+                    <p>Pontuação: <span id="final-score">0</span></p>
+                    <button id="restart-btn">Jogar Novamente</button>
+                </div>
+            </div>
+            
+            <div class="game-info">
+                <div class="score-section">
+                    <h3>Pontuação</h3>
+                    <div id="score">0</div>
+                </div>
+                
+                <div class="level-section">
+                    <h3>Nível</h3>
+                    <div id="level">1</div>
+                </div>
+                
+                <div class="lines-section">
+                    <h3>Linhas</h3>
+                    <div id="lines">0</div>
+                </div>
+                
+                <div class="next-piece">
+                    <h3>Próxima Peça</h3>
+                    <canvas id="next-canvas" width="120" height="120"></canvas>
+                </div>
+                
+                <div class="controls">
+                    <h3>Controles</h3>
+                    <div class="control-info">
+                        <p><strong>←/→</strong> - Mover</p>
+                        <p><strong>↓</strong> - Acelerar</p>
+                        <p><strong>↑</strong> - Rotacionar</p>
+                        <p><strong>Espaço</strong> - Pausar</p>
+                    </div>
+                </div>
+                
+                <div class="game-buttons">
+                    <button id="start-btn">Iniciar</button>
+                    <button id="pause-btn">Pausar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+

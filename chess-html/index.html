@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Xadrez</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>♔ Jogo de Xadrez ♛</h1>
+            <div class="game-info">
+                <div class="turn-indicator">
+                    <span id="current-player">Vez das Brancas</span>
+                </div>
+                <div class="game-status">
+                    <span id="game-status">Jogo em andamento</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-main">
+            <div class="board-container">
+                <div class="coordinates-left">
+                    <div class="coord">8</div>
+                    <div class="coord">7</div>
+                    <div class="coord">6</div>
+                    <div class="coord">5</div>
+                    <div class="coord">4</div>
+                    <div class="coord">3</div>
+                    <div class="coord">2</div>
+                    <div class="coord">1</div>
+                </div>
+                
+                <div class="board-wrapper">
+                    <div id="chessboard" class="chessboard">
+                        <!-- O tabuleiro será gerado dinamicamente pelo JavaScript -->
+                    </div>
+                    
+                    <div class="coordinates-bottom">
+                        <div class="coord">a</div>
+                        <div class="coord">b</div>
+                        <div class="coord">c</div>
+                        <div class="coord">d</div>
+                        <div class="coord">e</div>
+                        <div class="coord">f</div>
+                        <div class="coord">g</div>
+                        <div class="coord">h</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-controls">
+                <button id="new-game-btn" class="control-btn">
+                    🔄 Novo Jogo
+                </button>
+                <button id="undo-btn" class="control-btn" disabled>
+                    ↶ Desfazer
+                </button>
+                <div class="captured-pieces">
+                    <div class="captured-white">
+                        <h3>Peças Capturadas (Brancas)</h3>
+                        <div id="captured-white-pieces" class="pieces-container"></div>
+                    </div>
+                    <div class="captured-black">
+                        <h3>Peças Capturadas (Pretas)</h3>
+                        <div id="captured-black-pieces" class="pieces-container"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="game-footer">
+            <p>Use o mouse para selecionar e mover as peças. Clique em uma peça para ver os movimentos possíveis.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

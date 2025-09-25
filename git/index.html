@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 01 - Menu Fixo e Menu Lateral Sticky</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Menu Principal Fixo -->
+    <header class="menu-fixo">
+        <nav>
+            <div class="logo">
+                <h2>MeuSite</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Corpo Principal da Página -->
+    <main class="corpo-principal">
+        <!-- Menu Lateral Sticky -->
+        <aside class="menu-lateral-sticky">
+            <h3>Menu Lateral</h3>
+            <ul>
+                <li><a href="#secao1">Seção 1</a></li>
+                <li><a href="#secao2">Seção 2</a></li>
+                <li><a href="#secao3">Seção 3</a></li>
+                <li><a href="#secao4">Seção 4</a></li>
+                <li><a href="#secao5">Seção 5</a></li>
+            </ul>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <section class="conteudo-principal">
+            <div id="home" class="secao">
+                <h1>Bem-vindo ao Desafio 01</h1>
+                <p>Esta página demonstra o uso de <strong>position: fixed</strong> para o menu principal e <strong>position: sticky</strong> para o menu lateral.</p>
+                <p>Role a página para ver como os menus se comportam durante a navegação.</p>
+            </div>
+
+            <div id="secao1" class="secao">
+                <h2>Seção 1 - Position Fixed</h2>
+                <p>O menu principal no topo da página usa <code>position: fixed</code>, o que significa que ele permanece sempre visível, independentemente da posição de rolagem da página.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+
+            <div id="secao2" class="secao">
+                <h2>Seção 2 - Position Sticky</h2>
+                <p>O menu lateral usa <code>position: sticky</code>, que combina características do posicionamento relativo e fixo. Ele rola normalmente até atingir uma posição específica, então "gruda" nessa posição.</p>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+            </div>
+
+            <div id="secao3" class="secao">
+                <h2>Seção 3 - Comportamento dos Menus</h2>
+                <p>Observe como o menu lateral permanece visível enquanto você rola por esta seção, mas ainda respeita os limites do container pai.</p>
+                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>
+            </div>
+
+            <div id="secao4" class="secao">
+                <h2>Seção 4 - Layout Responsivo</h2>
+                <p>Este layout foi projetado para ser responsivo, adaptando-se a diferentes tamanhos de tela mantendo a funcionalidade dos menus.</p>
+                <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+            </div>
+
+            <div id="secao5" class="secao">
+                <h2>Seção 5 - Conclusão</h2>
+                <p>Esta é a última seção do conteúdo. Observe como o menu lateral se comporta quando você chega ao final da página.</p>
+                <p>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+        <p>&copy; 2024 Desafio 01 - Menu Fixo e Sticky. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
+
