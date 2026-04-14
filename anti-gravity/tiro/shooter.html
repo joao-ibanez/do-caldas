@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Shooter WebGL</title>
+    <link rel="stylesheet" href="shooter.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Three.js will append canvas here -->
+
+        <div class="hud-top-center">
+            <div class="cs-hud">
+                <div class="team-score team-t">
+                    <span id="score-player">0</span>
+                </div>
+                <div class="round-timer-box">
+                    <div id="round-display">ROUND 1</div>
+                    <div id="bots-alive-count">5 VIVOS</div>
+                </div>
+                <div class="team-score team-ct">
+                    <span id="score-bots">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="scoreboard-overlay" class="hidden">
+            <div class="scoreboard-container">
+                <div class="scoreboard-section">
+                    <h2>VOCÊ (TERRORISTAS)</h2>
+                    <table id="player-table" class="scoreboard-table">
+                        <thead>
+                            <tr>
+                                <th>JOGADOR</th>
+                                <th>KILLS</th>
+                                <th>MORTE</th>
+                                <th>DANO</th>
+                                <th>SCORE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="player-scoreboard-body"></tbody>
+                    </table>
+                </div>
+                <div class="scoreboard-section" style="margin-top: 20px;">
+                    <h2>BOTS (CONTRA-TERRORISTAS)</h2>
+                    <table id="bots-table" class="scoreboard-table">
+                        <thead>
+                            <tr>
+                                <th>BOT</th>
+                                <th>KILLS</th>
+                                <th>MORTE</th>
+                                <th>DANO</th>
+                                <th>SCORE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bots-scoreboard-body"></tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 20px; font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px;">TAB para fechar</p>
+            </div>
+        </div>
+
+        <div class="hud-top-right">
+            <div class="money-box">
+                <span style="color: #4caf50;">$</span><span id="money-display">800</span>
+            </div>
+            <canvas id="minimap" width="160" height="160"></canvas>
+        </div>
+        
+        <div id="crosshair">+</div>
+        <div id="scope-overlay" class="hidden"></div>
+        <div id="damage-flash"></div>
+        <div class="vignette"></div>
+        
+        <div class="hud-bottom">
+            <div class="stats-cs">
+                <div class="cs-icon health-icon">+</div>
+                <div id="health-text-cs">100</div>
+            </div>
+            
+            <div class="inventory-cs">
+                <div id="slot-1" class="inv-slot">1 <span class="slot-name">---</span></div>
+                <div id="slot-2" class="inv-slot">2 <span class="slot-name">GLOCK-18</span></div>
+                <div id="slot-3" class="inv-slot">3 <span class="slot-name">FACA</span></div>
+                <div id="slot-4" class="inv-slot">4 <span class="slot-name">UTILITY</span></div>
+            </div>
+
+            <div class="weapon-info-cs">
+                <div id="ammo-display-cs">20 / 120</div>
+                <div id="weapon-name-cs">GLOCK-18</div>
+            </div>
+        </div>
+    </div>
+        
+    <!-- Main Menu / Initial Screen -->
+    <div id="lock-screen" class="overlay">
+        <h1 style="letter-spacing: 5px; color: #e94560;">COUNTER STRIKE 3D</h1>
+        <p style="margin-bottom: 20px; color: #888;">Configurações Iniciais</p>
+        
+        <div class="menu-card">
+            <div class="setting-item">
+                <label>DIFICULDADE:</label>
+                <div class="difficulty-selection">
+                    <button id="diff-easy" class="btn-diff">FÁCIL</button>
+                    <button id="diff-medium" class="btn-diff active">MÉDIO</button>
+                    <button id="diff-hard" class="btn-diff">DIFÍCIL</button>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <label>VOLUME ÁUDIO: <span id="vol-info">50%</span></label>
+                <input type="range" id="volume-control" min="0" max="100" value="50">
+            </div>
+
+            <button id="start-game-btn" style="margin-top: 20px; width: 100%; height: 60px; font-size: 24px; background: linear-gradient(45deg, #e94560, #ff4d6d);">COMEÇAR JOGO</button>
+        </div>
+        
+        <p style="font-size: 12px; margin-top: 20px; color: #555;">W A S D - Mover | ESPAÇO - Pular | CTRL - Agachar | B - Loja</p>
+    </div>
+
+    <!-- Buy Menu -->
+    <div id="buy-menu" class="overlay hidden">
+        <h1>Arsenal de Combate</h1>
+        <p style="font-size: 18px; margin-bottom: 20px;">Créditos: <span id="buy-money" style="color:#4caf50; font-weight:900;">$800</span></p>
+        
+        <div class="buy-container">
+            <div class="buy-section">
+                <h3>PRIMÁRIAS</h3>
+                <button id="buy-shotgun">Escopeta <small>$1200</small></button>
+                <button id="buy-rifle">Rifle (AK) <small>$2700</small></button>
+                <button id="buy-sniper">Sniper (AWP) <small>$4750</small></button>
+            </div>
+            
+            <div class="buy-section">
+                <h3>PISTOLAS</h3>
+                <button id="buy-glock">Glock-18 <small>$200</small></button>
+                <button id="buy-usp">USP-S <small>$200</small></button>
+                <button id="buy-deagle">Desert Eagle <small>$700</small></button>
+            </div>
+
+            <div class="buy-section">
+                <h3>UTILITÁRIOS</h3>
+                <button id="buy-he">HE (Explosiva) <small>$300</small></button>
+                <button id="buy-smoke">Smoke (Fumaça) <small>$300</small></button>
+                <button id="buy-flash">Flash (Luz) <small>$200</small></button>
+            </div>
+        </div>
+        
+        <button id="close-buy-menu" style="margin-top:30px; background-color:#333; width: 200px;">FECHAR (B)</button>
+    </div>
+
+    <div id="round-overlay" class="overlay hidden">
+        <h1 id="round-title">Vitória!</h1>
+        <p id="round-message">Você eliminou os bots.</p>
+        <p id="round-timer">Próximo round em 3s...</p>
+    </div>
+    
+    <div id="game-over-screen" class="overlay hidden">
+        <h1 id="game-over-title">Game Over</h1>
+        <p id="game-over-message">Você perdeu a partida!</p>
+        <button id="restartBtn">Jogar Novamente</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="shooter.js"></script>
+</body>
+</html>
