@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coup Web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Overlay / Modals -->
+        <div id="overlay" class="hidden">
+            <div id="modal" class="glass-panel">
+                <h2 id="modal-title">Ação</h2>
+                <p id="modal-desc">Descrição do que está acontecendo...</p>
+                <div id="modal-actions"></div>
+            </div>
+        </div>
+
+        <header>
+            <h1>COUP</h1>
+            <div class="turn-indicator">Turno de: <span id="current-turn-name">Você</span></div>
+        </header>
+
+        <main>
+            <!-- Oponentes (Bots) -->
+            <div id="opponents">
+                <!-- Injetado via JS -->
+            </div>
+
+            <!-- Área Central: Tesouro, Baralho e Log -->
+            <div id="center-board">
+                <div class="deck-area">
+                    <div class="card-stack">
+                        <div class="card back"></div>
+                        <div class="card back"></div>
+                        <div class="card back" id="deck-top"></div>
+                    </div>
+                    <div class="stats">
+                        <span>Cartas na Corte: <strong id="deck-count">0</strong></span>
+                    </div>
+                </div>
+                
+                <div class="treasury-area">
+                    <div class="coin-stack" id="treasury-coins"></div>
+                    <div class="stats">
+                        <span>Moedas no Tesouro: <strong id="treasury-count">50</strong></span>
+                    </div>
+                </div>
+
+                <div class="action-log glass-panel" id="action-log">
+                    <ul id="log-list"></ul>
+                </div>
+            </div>
+
+            <!-- Jogador Principal -->
+            <div id="player-area">
+                <div class="player-info glass-panel">
+                    <h2>Você</h2>
+                    <div class="coins-display">Moedas: <span id="player-coins">2</span> <div class="coin-icon"></div></div>
+                </div>
+                
+                <div id="player-cards" class="cards-container">
+                    <!-- Injetado via JS -->
+                </div>
+
+                <div id="action-panel" class="glass-panel">
+                    <h3>Sua Ação</h3>
+                    <div class="actions-grid">
+                        <div class="action-group">
+                            <h4>Gerais</h4>
+                            <button class="btn-action" data-action="renda" title="Pegar 1 Moeda (Incontestável)">Renda (1M)</button>
+                            <button class="btn-action" data-action="ajuda" title="Pegar 2 Moedas (Pode ser bloqueado pelo Duque)">Ajuda Externa (2M)</button>
+                            <button class="btn-action" data-action="golpe" title="Pagar 7 Moedas para eliminar uma influência">Golpe (7M)</button>
+                        </div>
+                        <div class="action-group">
+                            <h4>Personagens (Pode Blefar)</h4>
+                            <button class="btn-action btn-char" data-action="duque" data-char="Duque" title="Pegar 3 Moedas">Duque (3M)</button>
+                            <button class="btn-action btn-char" data-action="assassino" data-char="Assassino" title="Pagar 3 Moedas para assassinar">Assassino (3M)</button>
+                            <button class="btn-action btn-char" data-action="capitao" data-char="Capitao" title="Roubar 2 Moedas de um jogador">Capitão (Roubar)</button>
+                            <button class="btn-action btn-char" data-action="embaixador" data-char="Embaixador" title="Trocar 2 cartas com o baralho">Embaixador (Trocar)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

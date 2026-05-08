@@ -1,0 +1,206 @@
+:root {
+    --primary: #ff8fa3;
+    --secondary: #ffb3c1;
+    --background: #fff0f3;
+    --text: #590d22;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    overflow-x: hidden;
+    position: relative;
+}
+
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 50%, var(--secondary) 0%, var(--background) 100%);
+    opacity: 0.5;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 4rem;
+    border-radius: 30px;
+    box-shadow: 0 8px 32px 0 rgba(255, 143, 163, 0.2);
+    animation: fadeInDown 1.5s ease-out;
+}
+
+h1, h2 {
+    font-family: 'Dancing Script', cursive;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 4rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.message-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.message-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(255, 143, 163, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 5px solid var(--primary);
+    cursor: text;
+}
+
+.message-card:hover, .message-card:focus {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 143, 163, 0.2);
+    outline: none;
+}
+
+.message-card h2 {
+    font-size: 2rem;
+}
+
+.message-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #777;
+}
+
+.message-card:focus p {
+    color: var(--text);
+}
+
+.gallery-placeholder {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.gallery-placeholder h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.photo-frame {
+    background: #fff;
+    padding: 1rem 1rem 4rem 1rem;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(calc(-5deg + 10deg * var(--rand, 0.5)));
+    transition: transform 0.3s ease;
+}
+
+.photo-frame:nth-child(1) { --rand: 0.2; }
+.photo-frame:nth-child(2) { --rand: 0.8; }
+.photo-frame:nth-child(3) { --rand: 0.1; }
+
+.photo-frame:hover {
+    transform: scale(1.05) rotate(0deg);
+    z-index: 10;
+}
+
+.photo-frame span {
+    font-family: 'Dancing Script', cursive;
+    color: #ccc;
+    font-size: 1.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    font-size: 1.5rem;
+    color: var(--primary);
+    opacity: 0;
+    pointer-events: none;
+    animation: floatUp 4s ease-in infinite;
+    z-index: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 3rem; }
+    .hero p { font-size: 1.2rem; }
+    .glass-panel { padding: 2rem; }
+}
